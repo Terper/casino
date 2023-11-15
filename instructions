@@ -1,0 +1,267 @@
+
+Kursprojekt: Online Casino
+
+Skapa ett Online Casino och demonstrera era kunskaper i frontend-programmering! Projektet utförs i första hand som pararbete, och det är indelat så att båda har sina egna specifika ansvarsområden. Fundera sinsemellan vem som vill ta vilket ansvarsområde, dra lott om ni inte kan komma överens annars.
+
+Kontakta mig om du av någon orsak vill jobba ensam. I så fall gör du hela UI/UX-delområdet plus Sten, Sax & Påse från spellogiken. Det blir alltså lite mer jobb om man är ensam.
+
+Ansvarsområdena är planerade så att båda ska kräva motsvarande kunskaper, och ha ungefär lika stor omfattning. Projektpoängen delas ut individuellt enligt hur väl man lyckats med sin andel, men ett välfungerande samarbete är också viktigt.
+Komma igång
+
+    Vi använder GitHub Classroom för att jobba på och lämna in det här projektarbetet.
+    Börja med att klicka på länken och klona ner projektrepon. Den första i arbetsparet skapar en grupp, den andra joinar gruppen. Namnge gärna er grupp enligt era användarnamn, typ bistromd-welandfr (om du får felmeddelande, testa göra ert teamnamn mer unikt)
+    Kom ihåg att pulla, commmitta och pusha ofta så undviker ni konflikter i er repo!
+    Länk till projektrepon: https://classroom.github.com/a/Cd6kY_AR 
+
+Ansvarsområde A: UI/UX
+
+Ditt jobb är att se till att webbsidan fungerar och går att navigera i.
+
+    Huvudsida med responsiv meny
+    Användarregistrering
+    Styrning för när casinot är öppet
+    Bildgalleri
+    Möjlighet för användaren att ändra sidans tema
+
+Ansvarsområde B: Spellogik
+
+Du kodar spelen samt de tilläggsfunktioner som behövs för dem.
+
+    Kontrollera spelarens ålder och hantera pengar
+    Tidsbegränsade spelsessioner
+    Användar-tracking
+    Själva spelen: Memory och sten, sax & påse
+
+Samarbete
+
+Ni kodar era egna delområden, men allt ska vara snyggt implemeterat på samma webbplats.
+
+    Kommunicera kontinuerligt så att båda hela tiden är på kartan med projektet.
+    Använd GitHub för samarbete, antingen så att båda pushar till main eller så att ena ansvarar för projektrepon, och den andra skapar pull requests.
+    Ha en vettig projektstruktur så att ni behöver jobba så lite som möjligt i samma filer (ni kan dela upp ansvaret över main.js och main.css om ni vill). Bygg vidare på strukturen i boilerplate-repon.
+    Hjälp varandra!
+
+ 
+
+Po-äng
+	
+
+Ansvarsområde A: UI/UX
+	
+
+Ansvarsområde B: Spellogik
+
+10p
+	
+
+1a – Huvudsida med användarregistrering
+
+    Sidans huvudsakliga index.html
+
+    Skapa två inmatningsfält och be användaren mata in förnamn och efternamn
+
+    Använd strängmetoder för att forma om det inmatade namnet till ett användarnamn (t.ex. Grace Hopper => hoppergr). Och generera en text typ “Välkommen Grace, ditt användarnamn är hoppergr” på sidan.
+
+    Båda fälten ska vara obligatoriska, ge ett felmeddelande (alert) om någåndera fältet är tomt.
+
+    SAMARBETE: om ni vill kan ni på huvudsidan (eller på en skild sida) presentera er och ert casino!
+
+	
+
+1b – Användaruppgifter för spel
+
+    Skapa två inmatningsfält och be användaren mata in sin ålder och hur mycket pengar den vill spela.
+
+    Användaren ska kunna ge pengasumman både med decimalkomma och decimalpunkt. Använd strängmetoder för att åstadkomma detta.
+
+    Om spelaren är minderårig ska det komma ett meddelande (alert) att man inte får spela.
+
+    Kan implementeras som skild sida eller som en del av huvudsidan (1a)
+
+15p
+	
+
+2a – Datum och klockslag på huvudsidan (som går hela tiden)
+
+ 
+
+    Ha datum och klockslag synligt och människoläsbart på sidan, t.ex. “Idag är det den 1.11.2022 kl 9:15:58”. Använd Date-metoder.
+
+    Gör så att casinot är stängt om man kommer dit under lördag eller söndag. Visa hur långt det är kvar till casinot öppnar, använd modulo (%) och division för att räkna om sekunder till timmar, minuter och sekunder.
+
+    Klockan ska gå hela tiden, dvs sekunderna ska uppdateras varje sekund (använd setInterval).
+
+    För att detta ska gå att testa, ha en dropdown (<select>) med veckodagarna så att man kan välja vilken veckodag det är nu. Default ska vara innevarande veckodag.
+
+    SAMARBETE: Kan vara bra att ha ett globalt sätt att stänga casinot, t.ex. en global boolean-variabel.
+
+ 
+	
+
+2b – Speltimer
+
+ 
+
+    Ha en dropdown (<select>) med några alternativ för hur länge du vill spela (för att motverka spelberoende), t.ex. 2h, 1 h, 30 min, 15 min, 5 min…
+
+    När man har valt speltid, räkna ut när sessionen tar slut och skriv ut t.ex. ”Din spelsession tar slut kl. 14:36”. Använd Date-metoder.
+
+    Ha en timer som visar hur lång tid du har kvar: Använd modulo (%) och division för att räkna om sekunder till timmar, minuter och sekunder.
+
+    Timern ska räkna ner hela tiden, dvs uppdateras varje sekund (använd setInterval).
+
+    När timern når 0, meddela användaren och stäng spelet.
+
+    SAMARBETE: Kan vara bra att ha ett globalt sätt att stänga casinot, t.ex. en global boolean-variabel.
+
+10p
+	
+
+3a – Byt färgtema
+
+ 
+
+    Ha en drop down-meny (<select>) med vilken man kan välja mellan några olika bakgrundsfärger.
+     
+
+    Utöka funktionaliteten till en färgmixer genom att använda ​HTML5 sliders. Använd inmatningen för
+    att byta färgen på sidans text
+     
+
+    Lagra färgtemat i en cookie eller i localStorage så att det är kvar när man besöker sidan nästa gång
+
+ 
+	
+
+3b – Användar-tracking
+
+ 
+
+För att ge användaren en bra upplevelse (och för att kunna sälja användardata till reklambolag...) behöver vi samla följande information. Skriv ut följande prydligt i konsolen när man besöker sidan:
+
+    Plattform, webbläsare och språk.
+     
+
+    Resolution och ​ fönsterstorlek som användaren har.
+     
+
+    Longitud och Latitud. ​Skriv ut ett felmeddelande om användaren nekar till geolocation.
+
+    Ha en cookie eller i localStorage med ett heltal som ökar varje gång man spelar. Skriv ut någonstans t.ex. ”Du har spelat 44 gånger”
+
+15p
+	
+
+4a – Bildgalleri
+
+    Gör ett bildgalleri (t.ex. med glamorösa bilder av hur tidigare vinnare lever i lyx).
+
+     
+
+    Skapa en lightbox (egen kod, inga tilläggsbibliotek) så att du har minst 6 st thumbnails som man kan klicka på. När man klickar på dem öppnas en större version ovanpå allt annat och bakgrunden blir mörkare.
+
+    Varje bild ska lyssna efter klick, skapa en lyssnare för container-elementet och kolla i event.target vilken bild som klickades (det är också ok att skapa lyssnarna med en forEach-loop av alla bildelement).
+
+    Tänk på UX, ha (t.ex.) ett X i hörnet så användaren förstår hur man stänger en bild.
+
+    Ha olika versioner av varje bild för thumbnail och full storlek (thumbnail högst 50 KB, full storlek minst 200 KB)
+     
+
+    Det är ok att hårdkoda galleriet i html, du behöver inte loopa ut dem (men du får förstås!)
+
+	
+
+4b – Memory-spel
+
+    Gör ett minnesspel med minst 6 kort. Bildsidan ska vara gömd från början, och när man för kursorn över ett kort ska det illustreras med en border el. dyl, och när man klickar på kortet ska det “vända” sig och visa sin bildsida
+     
+
+    Varje bild ska lyssna efter klick, skapa en lyssnare för container-elementet och kolla i event.target vilken bild som klickades (det är också ok att skapa lyssnarna med en forEach-loop av alla bildelement).
+     
+
+    Börja med att bara visa och gömma element, vidareutveckla sedan med t.ex. animation eller annat snyggt sätt att visa kortet (kolla in CSS transitions).
+     
+
+    (Om du vill kan du utveckla spellogiken i stället för att implementera animationer, t.ex. så att korten kommer i slumpmässig ordning.)
+     
+
+    Det är ok att hårdkoda korten i html, och det behöver inte finnas någon poängräkning el.dyl.
+
+20p
+	
+
+5a – Responsiv meny
+
+    Skapa en responsiv navigationsmeny så att man kan navigera bland sidorna, t.ex:
+
+        Hem
+
+        Memory-spel
+
+        Sten-sax-påse
+
+        Bildgalleri
+
+        Byt färgtema
+         
+
+    Gör en fungerande “hamburgermeny” med ikon t.ex från font awesome (eller helt enkelt detta tecken: ☰ )
+     
+
+    Tänk på UX (user experience), använd CSS för att göra den så snygg och användarvänlig som möjligt!
+     
+
+    Använd en array av objekt för länkarna i menyn så det är enkelt att lägga till nya element i framtiden. Loopa denna array för att generera menyn
+     
+
+    Testa att navigationen funkar både lokalt och som driftsatt (t.ex. på people.arcada.fi)
+     
+
+    Det är tillåtet att använda externa bibliotek (t.ex. bootstrap), men menyns innehåll ska genereras med hjälp av egen JS.
+
+    OM DU JOBBAR ENSAM – implementera också 5b – Sten, Sax & Påse inom detta delområde!
+
+	
+
+5b – Sten-sax-påse
+
+    Skapa tre knappar som man trycker på för att välja sten sax eller påse, datorn väljer slumpmässigt. Skriv ut vem som vann och tillåt spelaren att spela igen.
+
+    Använd objekt i spellogiken så att varje ”vapen” är ett objekt som innehåller information om vad den vinner och/eller förlorar mot. Definiera inte dessa objekt  globalt, utan ha dem i ett huvudobjekt (eller array) för alla vapen. På det sättet kan du skapa en prydlig spellogik med enklare if-satser.
+
+    Loopa dina vapenobjekt för att skapa knappar för Sten, Sax och Påse. Tips: du kan använda Object.keys() för att göra ett objekt itererbart som en array.
+
+    Spela om pengar! Ha ett fält där du väljer hur mycket du satsar per spel. Om du vinner fördubblas insatsen, om du förlora förlorar du den, och om det blir jämnt händer ingenting. Vinst/förlust adderas/subtraheras till den totala spelsumma du matade in i del 1a.
+
+    Det ska inte gå att spela med en större insats än den totala spelsumman (ha t.ex. en alert som berättar att pengarna inte räcker).
+
+    Casinot måste få sitt, kan du fixa till spelalgoritmen så att Casinot vinner i längden (som på riktigt!)?
+
+10p
+	
+
+6 – Stil & logik
+
+    Ha en skriptfil för globala saker som inkluderas i varje sida.
+    Ha en CSS-fil för global stil som inkluderas i varje sida
+    Det JavaScript och CSS som endast gäller en viss sida bör inte inkluderas i andra sidor
+    Koda vackert och konsekvent
+    Undvik onödiga upprepningar
+    Skriv kommentarer i koden där det behövs
+
+ 
+Inlämning
+
+    Gör en sista commit och push till GitHub, skriv INLÄMNING som commit-meddelande, commitens timestamp utgör inlämningstidpunkten.
+    Driftsätt casinot på people.arcada.fi eller på github.io (om ni är OK med att ha en public repo).
+    Skriv urlen till den driftsatta sidan i repons README.md
+    Lämna in också här på itslearning (enskilt), skriv i textfältet:
+        Vem av er som haft vilket ansvarsområde
+        En kort reflektion över hur du/ni tyckte projektet och samarbetet gick! (Ingen kod ska lämnas in på itslearning, GitHub räcker.)
+
+Övrigt
+
+    PLAGIAT innebär automatiskt underkänt – du får inte copy-pasta från nätet, ChatGPT eller kurskompisen utan att ange källa (det är förstås OK att kolla manualer och tutorials på nätet, men ni ska skriva er kod själva och förstå varenda rad!)
+     
+    Försenad inlämning innebär ett poängavdrag på 10% per påbörjad försenad vecka. Kursen följer dessa principer och riktlinjer: https://start.arcada.fi/sv/utbildningar/informationsteknik/principer-och-riktlinjer
+

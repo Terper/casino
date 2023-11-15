@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/main.css"> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
     <title>Casino</title>
-</head>
-<body>
-    
+  </head>
+  <body>
+    <header>
+      <h1>Casino</h1>
+      <select id="dayOverride" name="dayOverride">
+        <option value="1">Monday</option>
+        <option value="2">Tuesday</option>
+        <option value="3">Wednesday</option>
+        <option value="4">Thursday</option>
+        <option value="5">Friday</option>
+        <option value="6">Saturday</option>
+        <option value="0">Sunday</option>
+      </select>
+    </header>
+    <section>
+      <p id="clock"></p>
+    </section>
+    <section><p id="greeting"></p></section>
+    <section>
+      <select name="backgroundChanger" id="backgroundChanger">
+        <option value="rgb(255,255,255)">White</option>
+        <option value="rgb(248,248,255)">Ghost White</option>
+        <option value="rgb(240,248,255)">Alice Blue</option>
+        <option value="rgb(255,240,245)">Lavender Blush</option>
+        <option value="rgb(255,250,240)">Floral White</option>
+        <option value="rgb(245,255,250)">Mint Cream</option>
+        <option value="rgb(255,248,220)">Cornsilk</option>
+      </select>
+      <section>
+        <input type="range" min="0" max="255" id="red" class="rgbSlider" />
+        <input type="range" min="0" max="255" id="green" class="rgbSlider" />
+        <input type="range" min="0" max="255" id="blue" class="rgbSlider" />
+      </section>
+    </section>
+    <main></main>
+    <footer>
+      <button onclick="sessionStorage.clear()">Clear storage</button>
+    </footer>
     <script src="./assets/js/main.js"></script>
-</body>
+    <script src="./assets/js/index.js"></script>
+    <script src="./assets/js/utils.js"></script>
+  </body>
 </html>
