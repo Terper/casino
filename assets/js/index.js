@@ -25,8 +25,19 @@ document.addEventListener("DOMContentLoaded", async (event) => {
   });
 
   const body = document.querySelector("body");
+  const customColorOption = document.querySelector("#customColorOption");
+
   backgroundColor =
     sessionStorage.getItem("backgroundColor") ?? "rgb(255,248,220)";
+
+  console.log(sessionStorage.getItem("isUsingCustomColorOption"));
+
+  if (sessionStorage.getItem("isUsingCustomColorOption")) {
+    customColorOption.value = backgroundColor;
+  } else {
+    customColorOption.style.display = "none";
+  }
+
   const backgroundChanger = document.querySelector("#backgroundChanger");
   body.style.backgroundColor = backgroundColor;
   backgroundChanger.value = backgroundColor;
@@ -41,6 +52,8 @@ document.addEventListener("DOMContentLoaded", async (event) => {
     for (let i = 0; i < rgbSliders.length; i++) {
       rgbSliders[i].value = rgbValues[i];
     }
+    sessionStorage.setItem("isUsingCustomColor", false);
+    customColorOption.style.display = "none";
     sessionStorage.setItem("backgroundColor", backgroundChanger.value);
   });
 
@@ -61,8 +74,12 @@ document.addEventListener("DOMContentLoaded", async (event) => {
       console.log(element.id, element.value);
       const newBackgroundColor = `rgb(${rgbValues[0]},${rgbValues[1]},${rgbValues[2]})`;
       body.style.backgroundColor = newBackgroundColor;
+      customColorOption.value = newBackgroundColor;
+      customColorOption.style.display = "block";
+      backgroundChanger.value = newBackgroundColor;
       console.log(rgbValues);
       sessionStorage.setItem("backgroundColor", newBackgroundColor);
+      sessionStorage.setItem("isUsingCustomColorOption", true);
       backgroundColor = newBackgroundColor;
     });
   });
