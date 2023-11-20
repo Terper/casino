@@ -1,4 +1,77 @@
 /* Site-wide styling here */
+
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+
 body {
-  background-color: #fff8dc; /* Bara för att testa, ÄNDRA eller ta bort! */
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+.navIcon {
+  cursor: pointer;
+  display: none;
+  @media (max-width: 768px) {
+    display: inline;
+  }
+}
+.navIcon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.destinationsContainer {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+.destinationsContainer a {
+  text-decoration: none;
+  font-size: 1.6rem;
+  color: currentColor;
+  padding: 1rem;
+}
+
+.destinationsContainerOpen {
+  @media (max-width: 768px) {
+    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: -1;
+    background-color: white;
+  }
 }

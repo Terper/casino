@@ -3,6 +3,8 @@ let date;
 let dayDifference;
 let identity;
 let backgroundColor;
+let textColor;
+let selectedImage;
 
 document.addEventListener("DOMContentLoaded", async (event) => {
   const dayOverride = document.querySelector("#dayOverride");
@@ -18,69 +20,41 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 
   dayOverride.addEventListener("change", () => {
     dayDifference = currentDate.getDay() - dayOverride.value;
-    console.log(dayDifference);
     date = new Date(Date.now()) - dayDifference * 1000 * 60 * 60 * 24;
     sessionStorage.setItem("dayDifference", dayDifference);
     refreshClock();
   });
 
   const body = document.querySelector("body");
-  const customColorOption = document.querySelector("#customColorOption");
 
   backgroundColor =
     sessionStorage.getItem("backgroundColor") ?? "rgb(255,248,220)";
-
-  console.log(sessionStorage.getItem("isUsingCustomColorOption"));
-
-  if (sessionStorage.getItem("isUsingCustomColorOption")) {
-    customColorOption.value = backgroundColor;
-  } else {
-    customColorOption.style.display = "none";
-  }
+  textColor = sessionStorage.getItem("textColor") ?? "rgb(0,0,0)";
 
   const backgroundChanger = document.querySelector("#backgroundChanger");
   body.style.backgroundColor = backgroundColor;
   backgroundChanger.value = backgroundColor;
+  body.style.color = textColor;
 
   backgroundChanger.addEventListener("change", () => {
     body.style.backgroundColor = backgroundChanger.value;
-    const backgroundColor = backgroundChanger.value;
-    let rgbValues = backgroundColor
-      .substring(4, backgroundColor.length - 1)
-      .split(",");
-    const rgbSliders = document.querySelectorAll(".rgbSlider");
-    for (let i = 0; i < rgbSliders.length; i++) {
-      rgbSliders[i].value = rgbValues[i];
-    }
-    sessionStorage.setItem("isUsingCustomColor", false);
-    customColorOption.style.display = "none";
     sessionStorage.setItem("backgroundColor", backgroundChanger.value);
+    backgroundColor = backgroundChanger.value;
   });
 
   const rgbSliders = document.querySelectorAll(".rgbSlider");
   rgbSliders.forEach((element) => {
     const guide = ["red", "green", "blue"];
-    let rgbValues = backgroundColor
-      .substring(4, backgroundColor.length - 1)
-      .split(",");
+    let rgbValues = textColor.substring(4, textColor.length - 1).split(",");
     element.value = rgbValues[guide.indexOf(element.id)];
-    console.log(rgbValues);
 
     element.addEventListener("change", () => {
-      rgbValues = backgroundColor
-        .substring(4, backgroundColor.length - 1)
-        .split(",");
+      rgbValues = textColor.substring(4, textColor.length - 1).split(",");
       rgbValues[guide.indexOf(element.id)] = element.value;
-      console.log(element.id, element.value);
-      const newBackgroundColor = `rgb(${rgbValues[0]},${rgbValues[1]},${rgbValues[2]})`;
-      body.style.backgroundColor = newBackgroundColor;
-      customColorOption.value = newBackgroundColor;
-      customColorOption.style.display = "block";
-      backgroundChanger.value = newBackgroundColor;
-      console.log(rgbValues);
-      sessionStorage.setItem("backgroundColor", newBackgroundColor);
-      sessionStorage.setItem("isUsingCustomColorOption", true);
-      backgroundColor = newBackgroundColor;
+      const newTextColor = `rgb(${rgbValues[0]},${rgbValues[1]},${rgbValues[2]})`;
+      body.style.color = newTextColor;
+      sessionStorage.setItem("textColor", newTextColor);
+      textColor = newTextColor;
     });
   });
 
@@ -94,7 +68,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
   } else {
     console.log(identity);
     showGreeting();
-    await loadHtml("assets/html/games.html", main);
+    loadGallery();
   }
 });
 
@@ -117,10 +91,6 @@ const handleLoginForm = async (event, loginForm, main) => {
     username += firstName.toLowerCase().substring(0, difference);
   }
 
-  username.replace("å", "a");
-  username.replace("ä", "a");
-  username.replace("ö", "o");
-
   identity = {
     firstName: firstName,
     lastName: lastName,
@@ -129,8 +99,8 @@ const handleLoginForm = async (event, loginForm, main) => {
 
   sessionStorage.setItem("identity", JSON.stringify(identity));
 
-  await loadHtml("assets/html/games.html", main);
   showGreeting();
+  loadGallery();
 
   return;
 };
@@ -138,6 +108,56 @@ const handleLoginForm = async (event, loginForm, main) => {
 const showGreeting = () => {
   const greeting = document.querySelector("#greeting");
   greeting.innerHTML = `Welcome ${identity.firstName} ${identity.lastName}, your username is ${identity.username}!`;
+};
+
+const loadGallery = async () => {
+  const main = document.querySelector("main");
+  const images = [
+    { alt: "Blablabla" },
+    { alt: "Blablabla" },
+    { alt: "Blablabla" },
+    { alt: "Blablabla" },
+  ];
+  await loadHtml("assets/html/gallery.html", main);
+  const gallery = document.querySelector("#gallery");
+  for (let i = 0; i < images.length; i++) {
+    const wrapper = document.createElement("div");
+    wrapper.className = "thumbnailWrapper";
+    const thumbnail = document.createElement("img");
+    thumbnail.className = "thumbnail";
+    thumbnail.id = `thumbnail${i}`;
+    thumbnail.alt = images[i].alt;
+    thumbnail.src = `./assets/img/gallery/thumbnails/${i}.jpeg`;
+    wrapper.appendChild(thumbnail);
+    gallery.appendChild(wrapper);
+
+    thumbnail.addEventListener("click", (event) => {
+      // could also just use the numbnail from the for loop
+      const body = document.querySelector("body");
+      const clickedImage = event.target;
+      const imageIndex = parseInt(clickedImage.id.substring(9));
+      const image = document.createElement("img");
+      const imageContainer = document.createElement("div");
+      const lightbox = document.createElement("div");
+      const closeIcon = document.createElement("i");
+      image.src = `./assets/img/gallery/thumbnails/${imageIndex}.jpeg`;
+      image.alt = clickedImage.alt;
+      imageContainer.className = "lightboxImageContainer";
+      lightbox.className = "lightbox";
+      closeIcon.className = "closeIcon";
+
+      imageContainer.appendChild(image);
+      imageContainer.appendChild(closeIcon);
+      lightbox.appendChild(imageContainer);
+      body.appendChild(lightbox);
+
+      lightbox.addEventListener("click", (event) => {
+        if (event.target != image) {
+          lightbox.remove();
+        }
+      });
+    });
+  }
 };
 
 const refreshClock = () => {

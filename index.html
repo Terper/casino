@@ -5,11 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
     <title>Casino</title>
   </head>
   <body>
     <header>
       <h1>Casino</h1>
+
+      <nav></nav>
+    </header>
+    <section>
       <select id="dayOverride" name="dayOverride">
         <option value="1">Monday</option>
         <option value="2">Tuesday</option>
@@ -19,7 +24,7 @@
         <option value="6">Saturday</option>
         <option value="0">Sunday</option>
       </select>
-    </header>
+    </section>
     <section>
       <p id="clock"></p>
     </section>
@@ -33,7 +38,6 @@
         <option value="rgb(255,250,240)">Floral White</option>
         <option value="rgb(245,255,250)">Mint Cream</option>
         <option value="rgb(255,248,220)">Cornsilk</option>
-        <option value="" id="customColorOption">Custom Color</option>
       </select>
       <section>
         <input type="range" min="0" max="255" id="red" class="rgbSlider" />

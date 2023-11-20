@@ -1,0 +1,35 @@
+.gallery {
+  display: flex;
+}
+
+.thumbnail {
+  width: 4rem;
+  cursor: pointer;
+}
+
+.lightbox {
+  background-color: rgba(0, 0, 0, 60%);
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.lightboxImageContainer {
+  position: relative;
+  cursor: default;
+}
+.lightboxImageContainer img {
+  width: 12rem;
+}
+.lightboxImageContainer i {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
