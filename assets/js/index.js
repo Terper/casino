@@ -2,8 +2,6 @@ let interval;
 let date;
 let dayDifference;
 let identity;
-let backgroundColor;
-let textColor;
 let selectedImage;
 
 document.addEventListener("DOMContentLoaded", async (event) => {
@@ -27,34 +25,41 @@ document.addEventListener("DOMContentLoaded", async (event) => {
 
   const body = document.querySelector("body");
 
-  backgroundColor =
-    sessionStorage.getItem("backgroundColor") ?? "rgb(255,248,220)";
-  textColor = sessionStorage.getItem("textColor") ?? "rgb(0,0,0)";
-
+  // initialize backgroundColorChanger from storage or default
+  const backgroundColor =
+    sessionStorage.getItem("backgroundColor") ?? "rgb(255,255,255)";
   const backgroundChanger = document.querySelector("#backgroundChanger");
-  body.style.backgroundColor = backgroundColor;
   backgroundChanger.value = backgroundColor;
-  body.style.color = textColor;
-
+  // set backgroundColor to the value of backgroundColorChanger
   backgroundChanger.addEventListener("change", () => {
-    body.style.backgroundColor = backgroundChanger.value;
     sessionStorage.setItem("backgroundColor", backgroundChanger.value);
-    backgroundColor = backgroundChanger.value;
+    refreshBackgroundColor();
   });
 
+  // initialize rgbSliders from storage or default
   const rgbSliders = document.querySelectorAll(".rgbSlider");
+  const textColor = sessionStorage.getItem("textColor") ?? "rgb(0,0,0)";
   rgbSliders.forEach((element) => {
     const guide = ["red", "green", "blue"];
+    // removes "rgb(" + ")" and gets the values seperated by commas
     let rgbValues = textColor.substring(4, textColor.length - 1).split(",");
+    // set the value of the slider to the value of the respective rgbValues
     element.value = rgbValues[guide.indexOf(element.id)];
-
+    // event listener for any change in the sliders
     element.addEventListener("change", () => {
-      rgbValues = textColor.substring(4, textColor.length - 1).split(",");
+      // gets the newest textColor
+      const currentTextColor =
+        sessionStorage.getItem("textColor") ?? "rgb(0,0,0)";
+      // isolates rgb values
+      rgbValues = currentTextColor
+        .substring(4, currentTextColor.length - 1)
+        .split(",");
+      // changes the respective rgb value
       rgbValues[guide.indexOf(element.id)] = element.value;
+      // generates new rgb(x,x,x) string for usage and storage
       const newTextColor = `rgb(${rgbValues[0]},${rgbValues[1]},${rgbValues[2]})`;
-      body.style.color = newTextColor;
       sessionStorage.setItem("textColor", newTextColor);
-      textColor = newTextColor;
+      refreshTextColor();
     });
   });
 
