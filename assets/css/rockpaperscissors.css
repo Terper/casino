@@ -112,3 +112,26 @@ main {
 #computerWeapon svg {
   transform: scaleX(-1);
 }
+
+.betArea {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+  max-width: fit-content;
+  padding: 1rem;
+}
+
+.betArea label {
+  font-size: 1.5rem;
+}
+
+.betArea input {
+  font-size: 1.225rem;
+  padding: 0.5rem;
+  background-color: var(--background-color);
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  color: var(--text-color);
+}

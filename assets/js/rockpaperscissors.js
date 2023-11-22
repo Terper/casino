@@ -54,6 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="weaponsContainer">
         <div class="weapons" id="weapons"></div>
       </div>
+      <div class="betArea">
+        <label for="betAmount">Bet amount</label>
+        <input type="number" id="betAmount" placeholder="Bet amount" name="betAmount" min="0"/>
+      </div>
     `;
     main.appendChild(gameArea);
 
@@ -84,7 +88,7 @@ const playerWeaponSelectionEvent = (event) => {
   playerWeapon.dataset.weapon = weapon.name;
   const weaponsArea = document.getElementById("weapons");
 
-  // removes the eventlistener on all weapons
+  // removes the eventlistener on all weapons and disables them
   for (let i = 0; i < weaponsArea.children.length; i++) {
     weaponsArea.children[i].classList.add("disabled");
     weaponsArea.children[i].removeEventListener(
@@ -92,6 +96,10 @@ const playerWeaponSelectionEvent = (event) => {
       playerWeaponSelectionEvent
     );
   }
+
+  // disables the bet input
+  const betAmount = document.getElementById("betAmount");
+  betAmount.disabled = true;
 
   if (document.getElementById("result")) {
     document.getElementById("result").remove();
@@ -123,6 +131,7 @@ const computerWeaponSelection = () => {
 const checkWinner = () => {
   const result = document.createElement("div");
   const gameArea = document.querySelector(".gameArea");
+  const betAmount = document.getElementById("betAmount");
   result.className = "result";
   result.id = "result";
   gameArea.appendChild(result);
@@ -134,8 +143,10 @@ const checkWinner = () => {
     document.getElementById("computerWeapon").dataset.weapon;
   if (playerWeapon.winsAgainst === computerWeapon) {
     result.innerHTML = "You win!";
+    betAmount.value = betAmount.value * 2;
   } else if (playerWeapon.losesAgainst === computerWeapon) {
     result.innerHTML = "Computer wins!";
+    betAmount.value = betAmount.value * 0;
   } else {
     result.innerHTML = "It's a draw!";
   }
@@ -149,6 +160,8 @@ const checkWinner = () => {
       playerWeaponSelectionEvent
     );
   }
+
+  betAmount.disabled = false;
 };
 
 const getWeaponByName = (weaponName) => {
