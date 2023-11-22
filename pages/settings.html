@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <!-- importera main-CSS-->
+    <link rel="stylesheet" href="../assets/css/settings.css" />
+    <!-- importera sidspecifik CSS vid behov -->
+    <title>Settings</title>
+  </head>
+  <body data-path-prefix="../">
+    <div class="wrapper">
+      <div class="headerContainer">
+        <header>
+          <h1>Casino</h1>
+          <nav></nav>
+        </header>
+      </div>
+      <div id="clock" class="clock"></div>
+      <main>
+        <section class="backgroundSelect">
+          <label for="backgroundChanger">Background color</label>
+          <select
+            name="backgroundChanger"
+            id="backgroundChanger"
+            class="backgroundChanger"
+            name="backgroundChanger"
+          >
+            <option value="rgb(255,255,255)">White</option>
+            <option value="rgb(248,248,255)">Ghost White</option>
+            <option value="rgb(240,248,255)">Alice Blue</option>
+            <option value="rgb(255,240,245)">Lavender Blush</option>
+            <option value="rgb(255,250,240)">Floral White</option>
+            <option value="rgb(245,255,250)">Mint Cream</option>
+            <option value="rgb(255,248,220)">Cornsilk</option>
+          </select>
+        </section>
+        <section class="rgbSliders">
+          <span>Text color</span>
+          <div>
+            <label for="red">Red</label>
+            <input
+              type="range"
+              min="0"
+              max="255"
+              id="red"
+              class="rgbSlider"
+              name="red"
+            />
+          </div>
+          <div>
+            <label for="green">Green</label>
+            <input
+              type="range"
+              min="0"
+              max="255"
+              id="green"
+              class="rgbSlider"
+              name="green"
+            />
+          </div>
+          <div>
+            <label for="blue">Blue</label>
+            <input
+              type="range"
+              min="0"
+              max="255"
+              id="blue"
+              class="rgbSlider"
+              name="blue"
+            />
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer></footer>
+    <script src="../assets/js/main.js"></script>
+    <!-- importera main.js (OBS ../ )-->
+    <script src="../assets/js/settings.js"></script>
+    <!-- importera sidspecifik JS -->
+  </body>
+</html>

@@ -1,0 +1,41 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.rgbSliders span {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.rgbSliders div {
+  font-size: 1.225rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.backgroundSelect {
+  font-size: 1.5rem;
+}
+
+section select {
+  border: 1px solid black;
+  font-size: 1.225rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  color: var(--text-color);
+}

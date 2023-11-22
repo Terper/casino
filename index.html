@@ -8,33 +8,17 @@
     <link rel="stylesheet" href="./assets/css/index.css" />
     <title>Casino</title>
   </head>
-  <body>
-    <header>
-      <h1>Casino</h1>
-
-      <nav></nav>
-    </header>
-    <section>
-      <p id="clock"></p>
-    </section>
-    <section><p id="greeting"></p></section>
-    <section>
-      <select name="backgroundChanger" id="backgroundChanger">
-        <option value="rgb(255,255,255)">White</option>
-        <option value="rgb(248,248,255)">Ghost White</option>
-        <option value="rgb(240,248,255)">Alice Blue</option>
-        <option value="rgb(255,240,245)">Lavender Blush</option>
-        <option value="rgb(255,250,240)">Floral White</option>
-        <option value="rgb(245,255,250)">Mint Cream</option>
-        <option value="rgb(255,248,220)">Cornsilk</option>
-      </select>
-      <section>
-        <input type="range" min="0" max="255" id="red" class="rgbSlider" />
-        <input type="range" min="0" max="255" id="green" class="rgbSlider" />
-        <input type="range" min="0" max="255" id="blue" class="rgbSlider" />
-      </section>
-    </section>
-    <main></main>
+  <body data-path-prefix="./">
+    <div class="wrapper">
+      <div class="headerContainer">
+        <header>
+          <h1>Casino</h1>
+          <nav></nav>
+        </header>
+      </div>
+      <div id="clock" class="clock"></div>
+      <main></main>
+    </div>
     <footer></footer>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/index.js"></script>

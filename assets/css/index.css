@@ -1,9 +1,28 @@
-.gallery {
+.galleryContainer {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.galleryContainer span {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.gallery {
+  max-width: 1200px;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .thumbnail {
-  width: 4rem;
+  max-width: 100%;
+  max-height: 100%;
   cursor: pointer;
 }
 
@@ -23,13 +42,59 @@
 .lightboxImageContainer {
   position: relative;
   cursor: default;
+  padding: 1rem;
 }
 .lightboxImageContainer img {
-  width: 12rem;
+  max-width: 100%;
+  max-height: 100%;
 }
-.lightboxImageContainer i {
+.lightboxImageContainer svg {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  padding: 1.5rem;
+  height: 1.5rem;
+  top: 0;
+  right: 0;
   cursor: pointer;
+  fill: red;
+}
+
+.greeting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  max-width: fit-content;
+  padding: 1rem;
+}
+
+.loginForm label {
+  font-size: 1.225rem;
+  padding-top: 1rem;
+}
+
+.loginForm input {
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  color: var(--text-color);
+}
+
+.loginForm button {
+  margin-top: 1rem;
+  font-size: 1.225rem;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: var(--text-color);
 }
